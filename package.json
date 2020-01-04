@@ -1,0 +1,14 @@
+{
+  "name": "set-map-demo",
+  "version": "1.0.0",
+  "description": "Code for demonstrating usage of Set and Map objects in ES6.",
+  "main": "null",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zhu Mei",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
