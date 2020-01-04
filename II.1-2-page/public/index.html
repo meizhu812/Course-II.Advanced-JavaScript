@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Takeaway Food</title>
+  <link href="./index.css" rel="stylesheet"/>
+  <script type="text/javascript" src="../src/items.js"></script>
+  <script type="text/javascript" src="../src/promotions.js"></script>
+  <script type="text/javascript" src="../src/best-charge.js"></script>
+  <script type="text/javascript" src="./index.js"></script>
+</head>
+<body>
+<h1>“好多肉”在线点餐系统</h1>
+<div id="items">
+  <table>
+    <caption>点餐单</caption>
+    <thead id="cart-header">
+    <tr>
+      <th>商品</th>
+      <th>商品数量</th>
+    </tr>
+    </thead>
+    <tbody id="cart-contents"></tbody>
+  </table>
+</div>
+<div id="promotions">
+  <p><b>可选优惠：</b></p>
+  <ul id="promotions-list">
+  </ul>
+</div>
+<div>
+  <button onclick="calculatePrice()">结算</button>
+  <button onclick="clearMessage()">清除</button>
+</div>
+<pre id="message">请点击“结算”按钮获取结账单</pre>
+</body>
+</html>

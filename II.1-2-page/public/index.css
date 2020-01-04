@@ -1,0 +1,58 @@
+html {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#items table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+#items caption {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 16px;
+}
+
+#items td,
+#items th {
+  padding: 0 16px;
+  border: 1px #aaaaaa solid;
+  border-collapse: collapse;
+
+}
+
+#items tr {
+  height: 4em;
+}
+
+#cart-header {
+  height: 4em;
+  background-color: #eeeeee;
+}
+
+#cart-contents input {
+  vertical-align: baseline;
+}
+
+#cart-contents span {
+  margin: 0 8px;
+}
+
+#cart-contents [class$="button"] {
+  height: 32px;
+  width: 32px;
+}
+
+#promotions ul,
+#promotions li {
+  padding: 0;
+}
+
+#message {
+  margin: 2em auto;
+  height: 100%;
+  width: 24em;
+  line-height: 2em;
+  border: 1px solid red;
+}
