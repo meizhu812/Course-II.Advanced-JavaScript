@@ -9,3 +9,5 @@
 1. `1-set-basic-demo.js`和`4-map-basic-demo.js`可以逐个*SECTION*解除注释运行并查看输出结果;
 2. `2-set-dedupe-demo.js`和`5-map-count-demo.js`可以直接运行查看输出结果;
 3. `3-set-search-demo.js`和`6-map-perf-demo.js`可以直接运行查看输出结果，并可以修改`LEN`查看不同数据规模下的表现.
+
+[<<== return](https://github.com/thoughtworks-recruit-camp/Course-II.Advanced-JavaScript)
