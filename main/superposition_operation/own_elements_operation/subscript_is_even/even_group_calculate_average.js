@@ -1,5 +1,4 @@
 'use strict';
-const collectEvens = require("../../../filter/choose_even");
 const computeAverage = require("../../../reduce/compute_average");
 
 function even_group_calculate_average(collection) {
@@ -7,24 +6,25 @@ function even_group_calculate_average(collection) {
     return x.toString().length;
   }
 
-  let allDigits = [];
-  let evens = collectEvens(collection.filter(((value, index) => index % 2 !== 0)));
+  let evens = collection.filter(((value, index) => index % 2 !== 0 && value % 2 === 0));
   if (evens.length === 0) {
     return [0];
   }
+
   let evenGroups = evens.reduce((acc, cur) => {
     let nDigits = digitsAmount(cur);
-    let curIndex = allDigits.indexOf(nDigits);
-    if (curIndex === -1) {
-      allDigits.push(nDigits);
-      curIndex = allDigits.indexOf(nDigits);
-      acc[curIndex] = [];
+    if (!acc.has(nDigits)) {
+      acc.set(nDigits, { count: 0, sum: 0 });
     }
-    acc[curIndex].push(cur);
+    let [count, sum] = [acc.get(nDigits).count, acc.get(nDigits).sum];
+    acc.set(nDigits, { count: count + 1, sum: sum + cur })
     return acc;
-  }, []);
-  return evenGroups.reduce((acc, cur) => {
-    acc.push(computeAverage(cur));
+  }, new Map());
+
+  console.log(evenGroups);
+
+  return [...evenGroups.values()].reduce((acc, cur) => {
+    acc.push(cur.sum / cur.count);
     return acc;
   }, []).sort((a, b) => digitsAmount(a) - digitsAmount(b));
 }
