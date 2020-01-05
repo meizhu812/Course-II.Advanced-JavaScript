@@ -1,3 +1,4 @@
+
 showOutput = function () {
   var seq = 1;
   return function (command) {
@@ -6,23 +7,25 @@ showOutput = function () {
   }
 }();
 
-// //SECTION  Creation #1
+// SECTION Creation
+
+// // Creation #1
 // const demoSet = new Set([1, 2, 3, 5, 1, 2, 6]);
 // showOutput("demoSet");
 
-// //SECTION  Creation #2
+// // Creation #2
 // const demoSet = new Set('abceabd');
 // showOutput("demoSet");
 
-// //SECTION  Creation #3
+// // Creation #3
 // const demoSet = new Set(['abceabd', 'abceabd']);
 // showOutput("demoSet");
 
-// //SECTION  Creation #4
+// // Creation #4
 // const demoSet = new Set([['abceabd'], ['abceabd']]);
 // showOutput("demoSet");
 
-//SECTION  Creation #5.1
+// // Creation #5.1
 // const demoSet = new Set();
 // const demoArray = [1, 2, 3, 5, 1, 2, 6];
 // for (let index = 0, len = demoArray.length; index < len; index++) {
@@ -30,13 +33,17 @@ showOutput = function () {
 // }
 // showOutput("demoSet");
 
-// //SECTION  Creation #5.2
+// // Creation #5.2
 // const demoSet = new Set();
 // [1, 2, 3, 5, 1, 2, 6].forEach((value => demoSet.add(value)));
 // showOutput("demoSet");
 
+// !SECTION 
 
-// //SECTION  Properties and Methods #1
+
+// SECTION Properties and Methods
+
+// // Properties and Methods #1
 // const demoSet = new Set([1, 2, 3, 5, 1, 2, 6]);
 // showOutput("demoSet");
 // showOutput("demoSet.length");
@@ -49,14 +56,14 @@ showOutput = function () {
 // showOutput("demoSet.delete(42)");
 // showOutput("demoSet.clear()");
 
-// //SECTION  Properties and Methods #2
+// // Properties and Methods #2
 // demoSet = new Set().add(1).add(2).add(3).add(5).add(1).add(2).add(6);
 // showOutput("demoSet");
 // showOutput("demoSet.keys()");
 // showOutput("demoSet.values()");
 // showOutput("demoSet.entries()");
 
-// //SECTION  Properties and Methods #3
+// // Properties and Methods #3
 // const demoSet = new Set();
 // demoSet.add([1]);
 // demoSet.add([1]);
@@ -64,7 +71,7 @@ showOutput = function () {
 // showOutput("demoSet.keys()");
 // showOutput("demoSet.has([1])");
 
-//SECTION  Properties and Methods #4
+// // Properties and Methods #4
 // const demoSet = new Set();
 // let a = [1];
 // let b = [1];
@@ -75,8 +82,12 @@ showOutput = function () {
 // showOutput("demoSet.has(a)");
 // showOutput("demoSet.has(b)");
 
+// !SECTION 
 
-//SECTION  Conversion #1
+
+// SECTION Conversion
+
+// // Conversion #1
 // const demoSet = new Set([1, 2, 3, 5, 1, 2, 6]);
 // showOutput("demoSet");
 // showOutput("Array.from(demoSet)");
@@ -84,10 +95,12 @@ showOutput = function () {
 // showOutput("Array.of(demoSet)");
 // showOutput("Array.of(...demoSet)");
 
-//SECTION Conversion #2
+// // Conversion #2
 // const demoSet = new Set([1, 2, 3, 5, 1, 2, 6]);
 // showOutput("demoSet");
 // const plusOneSet = new Set(Array.from(demoSet).map(x => x + 1));
 // showOutput("plusOneSet");
 // const doubledSet = new Set([...demoSet].map(x => x * 2));
 // showOutput("doubledSet");
+
+// !SECTION 

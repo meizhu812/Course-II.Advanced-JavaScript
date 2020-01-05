@@ -25,6 +25,9 @@ function dedupeBenchmark(methods, dataSets) {
   }
 }
 
+// !SECTION 
+
+
 // SECTION Dedupe Methods
 
 DedupeM1 = {
@@ -77,6 +80,8 @@ DedupeM5 = {
   }
 };
 
+// !SECTION 
+
 
 // SECTION Data Sets
 
@@ -124,6 +129,9 @@ DataA4 = {
   }()
 };
 
+// !SECTION 
+
+
 // SECTION Main Code
 try {
   require.resolve("lodash");
@@ -132,3 +140,5 @@ try {
 catch (err) {
   dedupeBenchmark([DedupeM1, DedupeM2, DedupeM3, DedupeM4], [DataA1, DataA2, DataA3, DataA4]);
 }
+
+// !SECTION 

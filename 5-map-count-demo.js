@@ -31,6 +31,9 @@ function countBenchmark(methods, dataSets) {
   }
 }
 
+// !SECTION 
+
+
 // SECTION Count Methods
 
 CountM1 = {
@@ -70,6 +73,9 @@ CountM3 = {
     return countBy([...arr]);
   }
 };
+
+// !SECTION 
+
 
 // SECTION Data Sets
 
@@ -117,10 +123,16 @@ DataA4 = {
   }()
 };
 
+// !SECTION 
+
+
 // SECTION Main Code
+
 try {
   require.resolve("lodash");
   countBenchmark([CountM1, CountM2, CountM3], [DataA1, DataA2, DataA3, DataA4]);
 } catch (error) {
   countBenchmark([CountM1, CountM2], [DataA1, DataA2, DataA3, DataA4]);
 }
+
+// !SECTION 
