@@ -3,7 +3,33 @@ function appendChildren(children) {  // shortcut for appendChild
     this.appendChild(children[i]);
   }
 }
+class ItemRow {
+  constructor(itemData) {
+    this.data = itemData;
+  }
 
+  _toNameCell(name) {
+    let cell = document.createElement("td");
+    cell.innerHTML = `<span>${name}</span>`;
+    return cell;
+  };
+
+  _toQuantityCell(quantity) {
+    let cell = document.createElement("td");
+    cell.innerHTML = `<input type="button" class="m-button" value="-"><span class="item-quantity">${quantity}</span><input type="button" class="p-button" value="+">`;
+    return cell;
+  };
+  
+  render() {
+    let itemRowElement = document.createElement("tr");
+    itemRowElement.setAttribute("class", "item-row");
+    let nameCell = this._toNameCell(this.data.name); // 商品
+    let quantityCell = this._toQuantityCell(1); // 商品数量
+    appendChildren.call(itemRowElement, [nameCell, quantityCell]);
+    itemRowElement.setAttribute("data-id", this.data.id);
+    return itemRowElement;
+  }
+}
 
 function clearMessage() {
   let cartRows = document.getElementsByClassName("item-row");
@@ -19,7 +45,7 @@ function calculatePrice() {
   let itemsSelections = [];
   let cartRows = document.getElementsByClassName("item-row");
   for (let i = 0, len = cartRows.length; i < len; i++) {
-    let count = parseInt(cartRows[i].getElementsByClassName("item-quantity")[0].innerHTML);
+    let count = Number(cartRows[i].getElementsByClassName("item-quantity")[0].innerHTML);
     if (count !== 0) {
       itemsSelections.push(`${cartRows[i].getAttribute("data-id")} x ${cartRows[i].getElementsByClassName("item-quantity")[0].innerHTML}`)
     }
@@ -34,30 +60,9 @@ window.onload = function () {
   renderPromotionList();
   cartContents.addEventListener('click', handleQuantityChange, false);
 
-  function ItemRow(itemData) {
-    this.data = itemData;
-    this.toNameCell = (name) => {
-      let cell = document.createElement("td");
-      cell.innerHTML = `<span>${name}</span>`;
-      return cell;
-    };
-    this.toQuantityCell = (quantity) => {
-      let cell = document.createElement("td");
-      cell.innerHTML = `<input type="button" class="m-button" value="-"><span class="item-quantity">${quantity}</span><input type="button" class="p-button" value="+">`;
-      return cell;
-    };
-    let itemRow = document.createElement("tr");
-    itemRow.setAttribute("class", "item-row");
-    let nameCell = this.toNameCell(this.data.name);  // 商品
-    let quantityCell = this.toQuantityCell(1);  // 商品数量
-    appendChildren.call(itemRow, [nameCell, quantityCell]);
-    itemRow.setAttribute("data-id", this.data.id);
-    return itemRow;
-  }
-
   function renderItemsList() {
     for (let item of loadAllItems()) {
-      let itemRow = new ItemRow(item);
+      let itemRow = new ItemRow(item).render();
       cartContents.appendChild(itemRow);
     }
   }
@@ -109,4 +114,3 @@ window.onload = function () {
     }
   }
 };
-

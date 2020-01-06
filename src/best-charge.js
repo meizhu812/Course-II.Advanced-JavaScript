@@ -1,9 +1,11 @@
 const promotions = loadPromotions();
-const itemsPriceMap = loadAllItems().reduce((acc, cur) => {
+const allItems = loadAllItems();
+
+const itemsPriceMap = allItems.reduce((acc, cur) => {
   acc.set(cur.id, cur.price);
   return acc;
 }, new Map());
-const itemsNameMap = loadAllItems().reduce((acc, cur) => {
+const itemsNameMap = allItems.reduce((acc, cur) => {
   acc.set(cur.id, cur.name);
   return acc;
 }, new Map());
@@ -26,23 +28,23 @@ function bestCharge(selectedItems) {
     return acc + cur.price * cur.count;
   }, 0);
 
-  let finalCost = fullCost;
-  let discount = 0;
-  let promotionApplied = {};
+  let [finalCost, discount, bestPromotion]
+    = [fullCost, 0, {}];
 
   for (let promotion of promotions) {
-    switch (promotion.type) {
+    switch (promotion.type) {  // prepare for future promotion types
       case "满30减6元":
         if (fullCost > 30) {
           discount = 6;
-          promotionApplied = {
-            type: "满30减6元",
+          bestPromotion
+            = {
+            description: "满30减6元",
             discount: discount
           }
         }
         break;
       case "指定菜品半价":
-        const halfPriceCollection = new Set(promotions.filter((item) => item.type === "指定菜品半价")[0].items);  // 防止促销方式数量或顺序变化
+        const halfPriceCollection = new Set(promotions.find((item) => item.type === "指定菜品半价").items);  // 防止促销方式数量或顺序变化
         let halfPriceItems = [];
         let halfPriceDiscount = costDetails.reduce((acc, cur) => {
           if (halfPriceCollection.has(cur.id)) {
@@ -53,8 +55,8 @@ function bestCharge(selectedItems) {
         }, 0);
         if (halfPriceDiscount > discount) {
           discount = halfPriceDiscount;
-          promotionApplied = {
-            type: "指定菜品半价",
+          bestPromotion = {
+            description: "指定菜品半价",
             discount: discount,
             items: halfPriceItems
           }
@@ -63,33 +65,36 @@ function bestCharge(selectedItems) {
     }
     finalCost = fullCost - discount;
   }
-  return renderDetails(costDetails) + renderPromotionInfo(promotionApplied) + renderFooter(finalCost)
+
+  return renderDetails(costDetails) + renderPromotionInfo(bestPromotion) + renderFooter(finalCost)
 }
 
 function renderDetails(details) {
   let detailsString = "============= 订餐明细 =============\n";
   for (let item of details) {
-    detailsString += `${item.name} x ${item.count} = ${item.price*item.count}元\n`
+    detailsString += `${item.name} x ${item.count} = ${item.price * item.count}元\n`
   }
   detailsString += "-----------------------------------\n";
   return detailsString
 }
 
-function renderPromotionInfo(promotionApplied) {
+function renderPromotionInfo(promotion) {
   let promoInfoString = "使用优惠:\n";
-  switch (promotionApplied.type) {
+  
+  switch (promotion.description) {
     case "满30减6元":
       promoInfoString += "满30减6元，省6元\n";
       break;
     case "指定菜品半价":
-      promoInfoString += `指定菜品半价(${promotionApplied.items.join("，")})，省${promotionApplied.discount}元\n`;
+      promoInfoString += `指定菜品半价(${promotion
+        .items.join("，")})，省${promotion
+          .discount}元\n`;
       break;
     default:
-      promoInfoString = "";
+      return "";
   }
-  if (promotionApplied.type) {
-    promoInfoString += "-----------------------------------\n"
-  }
+
+  promoInfoString += "-----------------------------------\n"
   return promoInfoString
 }
 
