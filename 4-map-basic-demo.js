@@ -14,8 +14,8 @@ showOutput = function () {
 // showOutput("demoMap");
 
 // // Creation #2
-// // const demoMap = new Map({1: "a", 2: "b"});
-// // showOutput("demoMap");
+// const demoMap = new Map({1: "a", 2: "b"});
+// showOutput("demoMap");
 
 // // Creation #3.1
 // const demoMap = new Map();

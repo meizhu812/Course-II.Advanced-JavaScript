@@ -9,11 +9,11 @@ showOutput = function () {
 
 // SECTION Creation
 
-// // Creation #1
+// Creation #1
 // const demoSet = new Set([1, 2, 3, 5, 1, 2, 6]);
 // showOutput("demoSet");
 
-// // Creation #2
+// // // Creation #2
 // const demoSet = new Set('abceabd');
 // showOutput("demoSet");
 
