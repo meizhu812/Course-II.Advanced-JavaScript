@@ -11,7 +11,7 @@ console.timeEnd("build array");
 let result1 =[];
 console.time("search in array");
 for (let i = 0; i < LEN; i++) {
-  result1.push(array.includes(0));  // O(n2)???
+  result1.push(array.includes(array[i]));  // O(n2)???
 }
 console.timeEnd("search in array");
 
@@ -24,7 +24,7 @@ console.timeEnd("build set from array");
 let result2 = [];
 console.time("search in set");
 for (let i = 0; i < LEN; i++) {
-  result2.push(set.has(0));  // O(1)
+  result2.push(set.has(array[i]));  // O(1)
 }
 console.timeEnd("search in set");
 
