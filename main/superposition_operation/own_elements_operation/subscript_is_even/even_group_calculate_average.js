@@ -2,17 +2,13 @@
 const computeAverage = require("../../../reduce/compute_average");
 
 function even_group_calculate_average(collection) {
-  function digitsAmount(x) {
-    return x.toString().length;
-  }
-
+  let countDigits = x => x.toString().length;
   let evens = collection.filter(((value, index) => index % 2 !== 0 && value % 2 === 0));
   if (evens.length === 0) {
     return [0];
   }
-
-  let evenGroups = evens.reduce((acc, cur) => {
-    let nDigits = digitsAmount(cur);
+  let groups = evens.reduce((acc, cur) => {
+    let nDigits = countDigits(cur);
     if (!acc.has(nDigits)) {
       acc.set(nDigits, { count: 0, sum: 0 });
     }
@@ -20,13 +16,7 @@ function even_group_calculate_average(collection) {
     acc.set(nDigits, { count: count + 1, sum: sum + cur })
     return acc;
   }, new Map());
-
-  console.log(evenGroups);
-
-  return [...evenGroups.values()].reduce((acc, cur) => {
-    acc.push(cur.sum / cur.count);
-    return acc;
-  }, []).sort((a, b) => digitsAmount(a) - digitsAmount(b));
+  return [...groups.values()].map(group => group.sum / group.count).sort((a, b) => countDigits(a) - countDigits(b));
 }
 
 module.exports = even_group_calculate_average;

@@ -2,17 +2,13 @@
 const rankAsc = require("../../map/rank_desc");  // 规格写反了，这里命名调整回来了
 
 function rank_by_two_large_one_small(collection) {
-  let sortedArray = rankAsc(collection);
-  let result = [];
-  for (let index = 0, len = sortedArray.length; index < len; index += 3) {
-    let arrayFracs = sortedArray.slice(index, index + 3);
-    if (arrayFracs.length === 3) {
-      let smallNumber = arrayFracs.shift();
-      arrayFracs.push(smallNumber);
-    }
-    result = result.concat(arrayFracs);
+  rankAsc(collection);
+  let fracsCount = Math.floor(collection.length / 3);
+  for (let index = 0, len = fracsCount * 3; index < len; index += 3) {
+    [collection[index], collection[index + 1], collection[index + 2]]
+      = [collection[index+1], collection[index + 2], collection[index]];
   }
-  return result;
+  return collection;
 }
 
 module.exports = rank_by_two_large_one_small;

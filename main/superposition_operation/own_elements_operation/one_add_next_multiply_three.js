@@ -1,12 +1,12 @@
 'use strict';
 
 function one_add_next_multiply_three(collection) {
-  let prevNumber = 0;
+  let prevNum = 0;
   return collection.reduce((acc, cur) => {
-    if (prevNumber !== 0) {
-      acc.push((cur + prevNumber) * 3);
+    if (prevNum !== 0) {
+      acc.push((cur + prevNum) * 3);
     }
-    prevNumber = cur;
+    prevNum = cur;
     return acc;
   }, [])
 }
