@@ -4,7 +4,7 @@ function spilt_to_zero(number, interval) {
   let result = [];
   while (number > -interval) {
     result.push(number);
-    number = parseFloat((number - interval).toFixed(interval.toString().split('.')[1].length));  // 小数位数精度
+    number = Number((number - interval).toFixed(interval.toString().split('.')[1].length));  // 小数位数精度
   }
   return result;
 }

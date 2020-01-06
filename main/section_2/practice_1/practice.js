@@ -6,7 +6,7 @@ function count_same_elements(collection) {
     acc.get(cur).count++;
     return acc;
   }, new Map())
-    .values()]
+    .values()];
 }
 
 module.exports = count_same_elements;

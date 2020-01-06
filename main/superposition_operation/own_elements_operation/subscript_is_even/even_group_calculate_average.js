@@ -12,7 +12,7 @@ function even_group_calculate_average(collection) {
     if (!acc.has(nDigits)) {
       acc.set(nDigits, { count: 0, sum: 0 });
     }
-    let [count, sum] = [acc.get(nDigits).count, acc.get(nDigits).sum];
+    let { count, sum } = acc.get(nDigits);
     acc.set(nDigits, { count: count + 1, sum: sum + cur })
     return acc;
   }, new Map());
