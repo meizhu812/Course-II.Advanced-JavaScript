@@ -23,9 +23,7 @@ class ItemRow {
   render() {
     let itemRowElement = document.createElement("tr");
     itemRowElement.setAttribute("class", "item-row");
-    let nameCell = this._toNameCell(this.data.name); // 商品
-    let quantityCell = this._toQuantityCell(1); // 商品数量
-    appendChildren.call(itemRowElement, [nameCell, quantityCell]);
+    appendChildren.call(itemRowElement, [this._toNameCell(this.data.name), this._toQuantityCell(1)]);
     itemRowElement.setAttribute("data-id", this.data.id);
     return itemRowElement;
   }
