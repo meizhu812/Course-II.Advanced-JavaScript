@@ -1,6 +1,7 @@
 const LEN = 10000000;
 let array = [...new Array(LEN)].map((value, index) => index);
 
+
 let evens = 0;
 console.time("mod");
 for (element of array) {
@@ -8,6 +9,7 @@ for (element of array) {
 }
 console.log(evens);
 console.timeEnd("mod");
+
 
 evens = 0;
 console.time("bit");
