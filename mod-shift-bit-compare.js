@@ -10,6 +10,13 @@ for (element of array) {
 console.log(evens);
 console.timeEnd("mod");
 
+evens = 0;
+console.time("shift");
+for (element of array) {
+    evens += ((element >> 1) << 1 === element);
+}
+console.log(evens);
+console.timeEnd("shift");
 
 evens = 0;
 console.time("bit");
