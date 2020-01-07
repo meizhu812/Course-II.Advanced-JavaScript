@@ -19,7 +19,7 @@ class ItemRow {
     cell.innerHTML = `<input type="button" class="m-button" value="-"><span class="item-quantity">${quantity}</span><input type="button" class="p-button" value="+">`;
     return cell;
   };
-  
+
   render() {
     let itemRowElement = document.createElement("tr");
     itemRowElement.setAttribute("class", "item-row");
@@ -60,8 +60,8 @@ window.onload = function () {
 
   function renderItemsList() {
     for (let item of loadAllItems()) {
-      let itemRow = new ItemRow(item).render();
-      cartContents.appendChild(itemRow);
+      let itemRowElement = new ItemRow(item).render();
+      cartContents.appendChild(itemRowElement);
     }
   }
 
