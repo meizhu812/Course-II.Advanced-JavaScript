@@ -3,6 +3,7 @@ function appendChildren(children) {  // shortcut for appendChild
     this.appendChild(children[i]);
   }
 }
+
 class ItemRow {
   constructor(itemData) {
     this.data = itemData;
@@ -16,7 +17,10 @@ class ItemRow {
 
   _toQuantityCell(quantity) {
     let cell = document.createElement("td");
-    cell.innerHTML = `<input type="button" class="m-button" value="-"><span class="item-quantity">${quantity}</span><input type="button" class="p-button" value="+">`;
+    cell.innerHTML
+      = `<input type="button" class="m-button" value="-">`
+      + `<span class="item-quantity">${quantity}</span>`
+      + `<input type="button" class="p-button" value="+">`;
     return cell;
   };
 
@@ -74,7 +78,7 @@ window.onload = function () {
           break;
         case "指定菜品半价":
           let names = promotion.items.reduce((acc, cur) => {
-            acc.push(itemsNameMap.get(cur));
+            acc.push(idNameMap.get(cur));
             return acc;
           }, []);
           promotionsList.innerHTML += `<li>${promotion.type}：${names.join("，")}</li>`;
