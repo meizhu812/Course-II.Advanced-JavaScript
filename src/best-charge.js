@@ -4,7 +4,6 @@ const [idPriceMap, idNameMap] = loadAllItems().reduce((acc, cur) => {
   return acc;
 }, [new Map(), new Map()]);
 
-
 function bestCharge(selectedItems) {
   const [costDetails, fullCost] = selectedItems.reduce((acc, cur) => {
     let [id, count] = cur.split(" x ");
