@@ -6,6 +6,7 @@ html {
 #items table {
   margin: 0 auto;
   border-collapse: collapse;
+  width: 20em;
 }
 
 #items caption {
@@ -14,12 +15,10 @@ html {
   margin: 16px;
 }
 
-#items td,
-#items th {
+#items td, #items th {
   padding: 0 16px;
   border: 1px #aaaaaa solid;
   border-collapse: collapse;
-
 }
 
 #items tr {
@@ -44,7 +43,7 @@ html {
   width: 32px;
 }
 
-#promotions ul,
+#promotions ul, 
 #promotions li {
   padding: 0;
 }
